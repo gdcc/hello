@@ -4,6 +4,9 @@
   <groupId>org.dataverse.test</groupId>
   <artifactId>hello</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  <scm>
+    <developerConnection>scm:git:git@github.com:gdcc/hello.git</developerConnection>
+  </scm>
   <distributionManagement>
     <repository>
       <id>ossrh</id>

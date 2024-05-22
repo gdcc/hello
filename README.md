@@ -14,4 +14,4 @@ java -jar target/hello-*.jar
 
 ## Contributing
 
-See [CONTRIBUTING.md][CONTRIBUTING.md].
+See [CONTRIBUTING.md](CONTRIBUTING.md).

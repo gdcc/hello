@@ -31,9 +31,9 @@ jobs:
               uses: actions/cache@v3
               with:
                   path: ~/.m2/repository
-              key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
-              restore-keys: |
-                  ${{ runner.os }}-maven-
+                  key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+                  restore-keys: |
+                      ${{ runner.os }}-maven-
               # Enable tmate debugging of manually-triggered workflows if the input option was provided
             - name: Setup tmate session
               uses: mxschmitt/action-tmate@v3

@@ -92,8 +92,26 @@ TODO: Explain how to add the git tag (GitHub release) for the version you just p
 
 ### Publish snapshot from GitHub Actions
 
-TODO
+The GitHub Action at [.github/workflows/maven-snapshot.yml](.github/workflows/maven-snapshot.yml) is configured to publish snapshots automatically based on events.
+
+At minimum, the following config means that merging pull requests or committing directly to main should trigger the publishing of a snapshot.
+
+```yaml
+on:
+    push:
+        branches:
+            - main
+```
 
 ### Publish release from GitHub Actions
 
-TODO
+The following commands rely on [.github/workflows/maven-release.yml](.github/workflows/maven-release.yml).
+
+
+```
+mvn release:clean
+```
+
+```
+mvn release:prepare
+```

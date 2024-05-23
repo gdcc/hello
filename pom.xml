@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>org.dataverse.test</groupId>
   <artifactId>hello</artifactId>
-  <version>0.0.2-SNAPSHOT</version>
+  <version>0.0.2</version>
   <name>hello</name>
   <description>A hello world app for testing.</description>
   <url>https://github.com/gdcc/hello</url>
@@ -25,6 +25,7 @@
   <scm>
     <developerConnection>scm:git:git@github.com:gdcc/hello.git</developerConnection>
     <url>https://github.com/gdcc/hello</url>
+    <tag>hello-0.0.2</tag>
   </scm>
   <distributionManagement>
     <repository>
@@ -111,8 +112,8 @@
         <version>${spotless.version}</version>
         <configuration>
           <java>
-            <importOrder></importOrder>
-            <removeUnusedImports></removeUnusedImports>
+            <importOrder />
+            <removeUnusedImports />
             <googleJavaFormat>
               <version>1.15.0</version>
               <style>AOSP</style>
@@ -123,7 +124,7 @@
             <includes>
               <include>pom.xml</include>
             </includes>
-            <sortPom></sortPom>
+            <sortPom />
           </pom>
         </configuration>
       </plugin>

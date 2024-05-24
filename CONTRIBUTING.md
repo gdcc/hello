@@ -88,7 +88,7 @@ Finally, publish the real release with this command:
 
 Give it some time, maybe half an hour, and you should see the version at https://repo1.maven.org/maven2/org/dataverse/test/hello/ and https://central.sonatype.com/artifact/org.dataverse.test/hello
 
-TODO: Explain how to add the git tag (GitHub release) for the version you just published.
+TODO: Explain how to add the git tag for the version you just published.
 
 ### Publish snapshot from GitHub Actions
 
@@ -115,7 +115,7 @@ First run a clean:
 mvn release:clean
 ```
 
-Not that running the "prepare" command below will create two commits and a tag (GitHub release) and push them to GitHub!
+Not that running the "prepare" command below will create two commits and a tag and push them to GitHub!
 
 Then run a prepare:
 
@@ -129,7 +129,7 @@ Note that the "prepare" step is interactive. Let's say the version is `0.0.2-SNA
 What is the release version for "hello"? (org.dataverse.test:hello) 0.0.2: :
 ```
 
-Next you will be asked what Git tag (GitHub release) should be. It will default to `name-number` such as `hello-0.0.2` as shown below. Commonly on GitHub you'll see versions like `v0.0.2` instead but we are sticking with the defaults and accepting `hello-0.0.2` (for example). Here's the prompt:
+Next you will be asked what Git tag should be. It will default to `name-number` such as `hello-0.0.2` as shown below. Commonly on GitHub you'll see tags like `v0.0.2`, but we are sticking with the defaults offered by the release plugin. Here's the prompt:
 
 ```
 What is SCM release tag or label for "hello"? (org.dataverse.test:hello) hello-0.0.2: :

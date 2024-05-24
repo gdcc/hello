@@ -1,5 +1,7 @@
 # Hello
 
+A hello world app for testing.
+
 ## Building
 
 ```

@@ -24,8 +24,8 @@
   </developers>
   <scm>
     <developerConnection>scm:git:git@github.com:gdcc/hello.git</developerConnection>
-    <url>https://github.com/gdcc/hello</url>
     <tag>HEAD</tag>
+    <url>https://github.com/gdcc/hello</url>
   </scm>
   <distributionManagement>
     <repository>
@@ -112,8 +112,8 @@
         <version>${spotless.version}</version>
         <configuration>
           <java>
-            <importOrder />
-            <removeUnusedImports />
+            <importOrder></importOrder>
+            <removeUnusedImports></removeUnusedImports>
             <googleJavaFormat>
               <version>1.15.0</version>
               <style>AOSP</style>
@@ -124,7 +124,7 @@
             <includes>
               <include>pom.xml</include>
             </includes>
-            <sortPom />
+            <sortPom></sortPom>
           </pom>
         </configuration>
       </plugin>

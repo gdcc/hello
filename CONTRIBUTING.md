@@ -107,11 +107,42 @@ on:
 
 The following commands rely on [.github/workflows/maven-release.yml](.github/workflows/maven-release.yml).
 
+Before you begin, check that the version in the pom.xml ends with `-SNAPSHOT`. If it doesn't, someone might made a real release manually (from a local environment rather than GitHub Actions), so you should add `-SNAPSHOT` before proceeding.
+
+First run a clean:
 
 ```
 mvn release:clean
 ```
 
+Not that running the "prepare" command below will create two commits and a tag (GitHub release) and push them to GitHub!
+
+Then run a prepare:
+
 ```
 mvn release:prepare
 ```
+
+Note that the "prepare" step is interactive. Let's say the version is `0.0.2-SNAPSHOT` when you execute "prepare". You will be promped to remove `-SNAPSHOT` and set the release version to `0.2.2` like below. You are free to pick a different version, of course. Here's how the prompt looks:
+
+```
+What is the release version for "hello"? (org.dataverse.test:hello) 0.0.2: :
+```
+
+Next you will be asked what Git tag (GitHub release) should be. It will default to `name-number` such as `hello-0.0.2` as shown below. Commonly on GitHub you'll see versions like `v0.0.2` instead but we are sticking with the defaults and accepting `hello-0.0.2` (for example). Here's the prompt:
+
+```
+What is SCM release tag or label for "hello"? (org.dataverse.test:hello) hello-0.0.2: :
+```
+
+Next you are asked what the next snapshot will be, such as `0.0.3-SNAPSHOT`, a new patch release. You can just accept this default.
+
+```
+What is the new development version for "hello"? (org.dataverse.test:hello) 0.0.3-SNAPSHOT: :
+```
+
+At this point you should see two new commits at https://github.com/gdcc/hello
+
+You should also see a new tag at https://github.com/gdcc/hello/tags
+
+Give it some time, maybe half an hour, and you should see the version at https://repo1.maven.org/maven2/org/dataverse/test/hello/ and https://central.sonatype.com/artifact/org.dataverse.test/hello

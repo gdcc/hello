@@ -9,7 +9,7 @@ mvn clean compile assembly:single
 ## Formatting code
 
 ```
-spotless:apply
+mvn spotless:apply
 ```
 
 ## Making a release

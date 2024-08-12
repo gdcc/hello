@@ -88,7 +88,7 @@ Finally, publish the real release with this command:
 
 Give it some time, maybe half an hour, and you should see the version at https://repo1.maven.org/maven2/org/dataverse/test/hello/ and https://central.sonatype.com/artifact/org.dataverse.test/hello
 
-TODO: Explain how to add the git tag for the version you just published.
+TODO: Explain how to add the git tag for the version you just published. (The git tag is added automatically when you publish using our GitHub Action.)
 
 ### Publish snapshot from GitHub Actions
 

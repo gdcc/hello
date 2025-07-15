@@ -107,7 +107,7 @@ on:
 
 The following commands rely on [.github/workflows/maven-release.yml](.github/workflows/maven-release.yml).
 
-Before you begin, check that the version in the pom.xml ends with `-SNAPSHOT`. If it doesn't, someone might made a real release manually (from a local environment rather than GitHub Actions), so you should add `-SNAPSHOT` before proceeding.
+Before you begin, check that the version in the pom.xml ends with `-SNAPSHOT`. If it doesn't, someone might have made a real release manually (from a local environment rather than GitHub Actions, as described above), so you should add `-SNAPSHOT` before proceeding.
 
 First run a clean:
 

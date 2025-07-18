@@ -103,13 +103,30 @@ If you didn't just import the key, run `gpg --list-secret-keys --keyid-format=lo
 
 In the pom.xml, adjust the version to remove "-SNAPSHOT". For example, if the version number is "0.0.1-SNAPSHOT", make it "0.0.1".
 
+Make a git commit for the pom.xml change.
+
 Finally, publish the real release with this command:
 
 `mvn -Prelease -Dgpg.keyname=$DATAVERSEBOT_GPG_KEYNAME -Dgpg.passphrase=$DATAVERSEBOT_GPG_PASSWORD deploy`
 
+You'll see output like this:
+
+```
+[INFO] Uploaded bundle successfully, deployment name: hello, deploymentId: 52e47034-cc61-4cd4-8887-50a545a536ff. Deployment will publish automatically
+[INFO] Waiting until Deployment 52e47034-cc61-4cd4-8887-50a545a536ff is validated
+[INFO] Deployment 52e47034-cc61-4cd4-8887-50a545a536ff has been validated. To finish publishing visit https://central.sonatype.com/publishing/deployments
+```
+
+That last line is something of a lie. Publishing will happen automatically. Don't click the "Publish Component" button at https://central.sonatype.com/publishing/deployments no matter how tempting it may be. 😈
+
 Give it some time, maybe half an hour, and you should see the version at https://repo1.maven.org/maven2/org/dataverse/test/hello/ and https://central.sonatype.com/artifact/org.dataverse.test/hello
 
-TODO: Explain how to add the git tag for the version you just published. (The git tag is added automatically when you publish using our GitHub Action.)
+When you publish using the GitHub Action, a tag is created and pushed automatically for you. We'll do these steps manually. But first, let's check what the tag messages look like with `git tag -n`. Now that we see the pattern, create the tag manually and push it, like in this example:
+
+```
+git tag -a hello-0.0.5 -m "[maven-release-plugin] copy for tag hello-0.0.5"
+git push origin hello-0.0.5
+```
 
 ### Publish snapshot from GitHub Actions
 

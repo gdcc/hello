@@ -28,7 +28,7 @@ Create or edit `~/.m2/settings.xml` to contain the following:
 <settings>
   <servers>
     <server>
-      <id>ossrh</id>
+      <id>central</id>
       <username>REDACTED</username>
       <password>REDACTED</password>
     </server>
@@ -50,7 +50,22 @@ Publish the snapshot:
 mvn deploy
 ```
 
-The output should indicate that the artifacts have `SNAPSHOT` in the name and have been uploaded to somewhere under https://s01.oss.sonatype.org/content/repositories/snapshots/org/dataverse/test/hello/
+Verify the snapshot was uploaded:
+
+tl;dr: Look for output like https://central.sonatype.com/repository/maven-snapshots/org/dataverse/test/hello/0.0.5-SNAPSHOT/hello-0.0.5-20250718.191054-2.jar in the publish step above and try to download that jar.
+
+Before OSSRH was retired, you could browse through snapshot jars you published at <https://s01.oss.sonatype.org/content/repositories/snapshots/org/dataverse/test/hello/>, for example. Now, even though you may see the URL of the jar as shown above during the "publish" step, if you try to browse the various snapshot jars at https://central.sonatype.com/repository/maven-snapshots/org/dataverse/test/hello/0.0.5-SNAPSHOT/ you'll see "This maven2 hosted repository is not directly browseable at this URL. Please use the browse or HTML index views to inspect the contents of this repository." Sadly, the "browse" and "HTML index" links don't work, as noted in a [question](https://community.sonatype.com/t/this-maven2-group-repository-is-not-directly-browseable-at-this-url/8991) on the Sonatype Community forum. Below is a suggestion for confirming that the jar was uploaded properly, which is to use Maven to copy the jar to your local directory.
+
+```
+# be sure to update the version in the command below
+mvn dependency:copy -DrepoUrl=https://central.sonatype.com/repository/maven-snapshots/ -Dartifact=org.dataverse.test:hello:0.0.5-SNAPSHOT -DoutputDirectory=.
+```
+
+At this point you could compare the checksums with something like `md5sum hello-0.0.5-SNAPSHOT.jar target/hello-0.0.5-SNAPSHOT.jar`. Then you'll probably want to delete the jar in your current working directory.
+
+Another approach would be to up a project that consumes snapshots (see https://central.sonatype.org/publish/publish-portal-snapshots/#consuming-snapshot-releases-for-your-project ) to verify that your snapshot was uploaded properly.
+
+mvn dependency:copy -DrepoUrl=https://central.sonatype.com/repository/maven-snapshots/ -Dartifact=org.dataverse.test:hello:0.0.5-SNAPSHOT -DoutputDirectory=.
 
 ### Publish release from local environment
 

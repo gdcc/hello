@@ -71,10 +71,14 @@ mvn dependency:copy -DrepoUrl=https://central.sonatype.com/repository/maven-snap
 
 Now let's move on to publishing a real release from our local environment. We will be following a process similar to [.github/workflows/maven-release.yml](.github/workflows/maven-release.yml).
 
-First, import the private DATAVERSEBOT_GPG_KEY. Note that you will be prompted for DATAVERSEBOT_GPG_PASSWORD. Both are referenced in the GitHub Action above. You'll need to get the actual values from a member of the Dataverse core team.
+You'll need the `gpg` binary in the steps below. On Mac, you can install it with `brew install gnupg`.
+
+You might want to run `gpg --list-keys` and `gpg --list-secret-keys --keyid-format=long` to see the keys you have right now. You may not have any, yet.
+
+Import the private DATAVERSEBOT_GPG_KEY. Note that you will be prompted for DATAVERSEBOT_GPG_PASSWORD. Both are referenced in the GitHub Action above. You'll need to get the actual values from a member of the Dataverse core team.
 
 ```
-gpg --import privatekey.txt
+gpg --import gdcc-key-till-2025-08-12.gpg
 ```
 
 You should see output similar to this:
@@ -94,6 +98,8 @@ Then, export environment variables with the key name and passphrase:
 export DATAVERSEBOT_GPG_KEYNAME="BAFC446FC031F36B"
 export DATAVERSEBOT_GPG_PASSWORD="REDACTED"
 ```
+
+If you didn't just import the key, run `gpg --list-secret-keys --keyid-format=long` to find the right value for DATAVERSEBOT_GPG_KEYNAME, the GPG key ID. See also https://docs.github.com/en/authentication/managing-commit-signature-verification/checking-for-existing-gpg-keys
 
 In the pom.xml, adjust the version to remove "-SNAPSHOT". For example, if the version number is "0.0.1-SNAPSHOT", make it "0.0.1".
 

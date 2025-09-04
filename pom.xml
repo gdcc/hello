@@ -10,7 +10,7 @@
 
   <groupId>org.dataverse.test</groupId>
   <artifactId>hello</artifactId>
-  <version>0.0.6</version>
+  <version>0.0.7-SNAPSHOT</version>
   <name>hello</name>
   <description>A hello world app for testing.</description>
   <url>https://github.com/gdcc/hello</url>
@@ -87,8 +87,4 @@
       </plugin>
     </plugins>
   </build>
-
-  <scm>
-    <tag>hello-0.0.6</tag>
-  </scm>
 </project>

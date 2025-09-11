@@ -65,7 +65,6 @@ If the command above worked, the jar should now be in `~/.m2/repository/org/data
 
 Another approach would be to up a project that consumes snapshots (see https://central.sonatype.org/publish/publish-portal-snapshots/#consuming-snapshot-releases-for-your-project ) to verify that your snapshot was uploaded properly.
 
-
 ### Publish release from local environment
 
 Now let's move on to publishing a real release from our local environment. We will be following a process similar to [.github/workflows/maven-release.yml](.github/workflows/maven-release.yml).

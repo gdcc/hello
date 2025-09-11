@@ -77,7 +77,7 @@ You might want to run `gpg --list-keys` and `gpg --list-secret-keys --keyid-form
 Import the private DATAVERSEBOT_GPG_KEY. Note that you will be prompted for DATAVERSEBOT_GPG_PASSWORD. Both are referenced in the GitHub Action above. You'll need to get the actual values from a member of the Dataverse core team.
 
 ```
-gpg --import gdcc-key-till-2025-08-12.gpg
+gpg --import gdcc-key-till-2027-09-10.gpg
 ```
 
 You should see output similar to this:
@@ -99,6 +99,8 @@ export DATAVERSEBOT_GPG_PASSWORD="REDACTED"
 ```
 
 If you didn't just import the key, run `gpg --list-secret-keys --keyid-format=long` to find the right value for DATAVERSEBOT_GPG_KEYNAME, the GPG key ID. See also https://docs.github.com/en/authentication/managing-commit-signature-verification/checking-for-existing-gpg-keys
+
+If the key is expired, export the new gpg file from our shared secrets and run `--import` again, as shown above, this file on the new file.
 
 In the pom.xml, adjust the version to remove "-SNAPSHOT". For example, if the version number is "0.0.1-SNAPSHOT", make it "0.0.1".
 
@@ -183,3 +185,9 @@ At this point you should see two new commits at https://github.com/gdcc/hello
 You should also see a new tag at https://github.com/gdcc/hello/tags
 
 Give it some time, maybe half an hour, and you should see the version at https://repo1.maven.org/maven2/org/dataverse/test/hello/ and https://central.sonatype.com/artifact/org.dataverse.test/hello
+
+The action uses `DATAVERSEBOT_GPG_KEY` which needs to be renewed from time to time. This "hello" app uses the version that's stored centrally under the gdcc GitHub Org. If you ever need to update it, be sure to export it the ASCII armored output version as shown below before copying and pasting it into a GitHub secret.
+
+```
+gpg --armor --export-secret-key
+```
